@@ -91,7 +91,7 @@ class AT_Users
 			$this->truename       = strval($userdata['truename']);
 			$this->signature      = strval($userdata['signature']);
 			$this->avatar         = get_photo($this->uuid, 40);
-			$this->is_uper        = intval($userdata['is_uper']);
+			$this->is_super        = intval($userdata['is_super']);
 			$this->logined        = intval($userdata['logined']);
 
 			if (strlen($this->signature) == 0)
@@ -140,6 +140,19 @@ class AT_Users
 				$this->fullname         = get_fullname($data->username, $data->truename);
 				$this->signature        = $data->signature;
 				$this->is_super         = $data->is_super;
+
+				// Set session
+				$this->CI->session->set_userdata(array(
+							'user_id' => $this->user_id, 
+							'uuid' => $this->uuid,
+							'username' => $this->username,
+							'password' => $this->password, 
+							'truename' => $this->truename, 
+							'fullname' => $this->fullname, 
+							'signature' => $this->signature, 
+							'is_super' => $this->is_super,
+							'logined' => TRUE
+						));
 
 				// Update user attached data
 				$item = array(

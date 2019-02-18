@@ -39,14 +39,16 @@ class AT_Controller extends CI_Controller
 	{
 		parent::__construct();
 
-		set_error_handler('error_handler');
+		// set_error_handler('error_handler');
 		set_time_limit(0);
 
 		// Loading model
 		$this->load->database();
 
+		$this->load->helper('url');
+
 		// Loaded class library
-		$this->load->library(array('Session', 'AT_Config', 'AT_Integrate', 'AT_EventLogs', 'AT_Users'));
+		$this->load->library(array('Session', 'AT_Config', 'AT_Integrate', 'AT_EventLog', 'AT_Users'));
 
 		if ($this->at_users->logined == FALSE || $this->at_users->user_id == 0)
 		{
@@ -55,13 +57,10 @@ class AT_Controller extends CI_Controller
 		}
 		else
 		{
-			// Common Language
-			$this->lang_common = $this->at_integrate->get_lang('common');
-
-			if (strlen($this->at_config->TimeZone) > 0)
+			if (strlen($this->at_config->time_zone) > 0)
 			{
 				// Set the date of the default time zone
-				date_default_timezone_set($this->at_config->TimeZone);
+				date_default_timezone_set($this->at_config->time_zone);
 			}
 		}
 	}
