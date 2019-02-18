@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = 'http://test.neasyth.com';
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = 'butler.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -521,3 +521,15 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+/*
+|--------------------------------------------------------------------------
+| System Config
+|--------------------------------------------------------------------------
+|
+| 后台管理系统设置
+*/
+// 系统名称
+$config['sys_name'] = '后台管理系统';
+// 系统描述
+$config['sys_intro'] = 'Neasyth官网后台管理系统';
